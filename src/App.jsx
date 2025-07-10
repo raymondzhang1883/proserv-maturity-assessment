@@ -54,7 +54,7 @@ const ProServKPIAssessment = () => {
   const [answers, setAnswers] = useState({});
   const [scores, setScores] = useState({});
   const [showResults, setShowResults] = useState(false);
-  const [gdprConsent, setGdprConsent] = useState(false);
+  const [gdprConsent, setGdprConsent] = useState(true);
 
   const sections = [
     { id: 'context', title: 'Business Context', icon: Target },
@@ -1023,20 +1023,7 @@ const ProServKPIAssessment = () => {
           </button>
         </div>
 
-        <div className="pt-4 border-t">
-          <label className="flex items-start space-x-3 text-sm text-gray-600">
-            <input
-              type="checkbox"
-              checked={gdprConsent}
-              onChange={(e) => setGdprConsent(e.target.checked)}
-              className="w-4 h-4 text-blue-600 mt-0.5"
-            />
-            <span>
-              I consent to Resultant storing my responses for analysis and follow-up communication. 
-              You can access your results regardless of this choice.
-            </span>
-          </label>
-        </div>
+
       </div>
     );
   };
@@ -1200,6 +1187,12 @@ const ProServKPIAssessment = () => {
             <span>{currentSection === sections.length - 1 ? 'See Results' : 'Next'}</span>
             <ChevronRight className="w-5 h-5" />
           </button>
+        </div>
+
+        <div className="mt-8 text-center">
+          <p className="text-xs text-gray-400">
+            By taking this assessment, you consent to Resultant storing your responses for analysis and follow-up communication. You can access your results regardless of this choice.
+          </p>
         </div>
       </div>
     </div>
