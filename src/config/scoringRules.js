@@ -1,8 +1,8 @@
 export const MANUAL_WORK_SCORING = {
-  'Mostly Automated': 0,
-  'Partially Automated': 1,
-  'Somewhat Automated': 2,
-  'Mostly Manual': 3
+  'Nothing': 0,
+  'Very little': 1,
+  'Around half': 2,
+  'More than half': 3
 };
 
 export const LATENCY_SCORING = {

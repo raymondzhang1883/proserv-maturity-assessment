@@ -59,10 +59,10 @@ export const questions = {
       question: 'Roughly what share of your KPI data still needs manual fixes every month?',
       type: 'single-select',
       options: [
-        'Mostly Automated',
-        'Partially Automated',
-        'Somewhat Automated',
-        'Mostly Manual'
+        'Nothing',
+        'Very little',
+        'Around half',
+        'More than half'
       ]
     },
     {
