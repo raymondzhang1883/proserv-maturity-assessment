@@ -4,6 +4,7 @@ import {
   FORECAST_SCORING,
   AUTOMATION_MATRIX,
   AUTOMATION_SCORING_WEIGHTS,
+  GOVERNANCE_SCORING,
   SCORING_CALCULATIONS
 } from '../config/scoringRules.js';
 import { allKPIs } from '../config/questions.js';
@@ -48,7 +49,7 @@ export class ScoringEngine {
     // Calculate weighted score for partial matches
     let score = 1; // Base score
 
-    if (tools.includes('BI platform')) {
+    if (tools.includes('BI platform (Tableau / Power BI / Looker)')) {
       score += AUTOMATION_SCORING_WEIGHTS.BI_PLATFORM;
     }
     if (tools.includes('PSA built-in dashboards')) {
@@ -74,22 +75,22 @@ export class ScoringEngine {
    * Calculate governance score based on ownership and user adoption
    */
   static calculateGovernanceScore(kpiOwner = '', dataUsers = []) {
-    const hasOwner = !kpiOwner.includes('No clear owner');
-    const userGroups = dataUsers.length;
+    // Get owner weight (0-4 points)
+    const ownerWeight = GOVERNANCE_SCORING.OWNER_WEIGHTS[kpiOwner] || 0;
     
-    let governance = 1;
+    // Calculate weighted user adoption (0-6 points max)
+    const userWeight = dataUsers.reduce((total, user) => {
+      return total + (GOVERNANCE_SCORING.USER_WEIGHTS[user] || 0);
+    }, 0);
     
-    if (hasOwner && userGroups >= 3) {
-      governance = 10;
-    } else if (hasOwner && userGroups >= 2) {
-      governance = 7;
-    } else if (hasOwner) {
-      governance = 5;
-    } else if (userGroups >= 2) {
-      governance = 3;
-    }
-
-    return governance;
+    // Cap user weight at 6 to prevent runaway scores
+    const cappedUserWeight = Math.min(6, userWeight);
+    
+    // Total governance score (0-10 points)
+    const governance = Math.min(10, ownerWeight + cappedUserWeight);
+    
+    // Ensure minimum score of 1 if any governance exists
+    return Math.max(1, governance);
   }
 
   /**
@@ -151,10 +152,18 @@ export class ScoringEngine {
    * Helper method to check if tools/architecture/team matches a specific config
    */
   static _matchesAutomationConfig(tools, architecture, team, config) {
-    const hasRequiredTools = config.tools.some(tool => tools.includes(tool));
-    const hasRequiredArchitecture = architecture.includes(config.architecture);
+    // Check if user has ALL required tools (for exact matches)
+    const hasAllRequiredTools = config.tools.every(tool => tools.includes(tool));
+    
+    // Check if user has ONLY the required tools (no additional tools that would change the score)
+    const hasOnlyRequiredTools = tools.length === config.tools.length;
+    
+    // For perfect matching, require exact tool match
+    const hasExactToolMatch = hasAllRequiredTools && hasOnlyRequiredTools;
+    
+    const hasRequiredArchitecture = architecture === config.architecture;
     const hasRequiredTeam = team === config.team;
 
-    return hasRequiredTools && hasRequiredArchitecture && hasRequiredTeam;
+    return hasExactToolMatch && hasRequiredArchitecture && hasRequiredTeam;
   }
 } 

@@ -247,7 +247,7 @@ const ProServKPIAssessment = () => {
         <div className="text-center mb-8">
           <div className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg">
             <span className="text-lg font-medium">Total Maturity Score: </span>
-            <span className="text-2xl font-bold">{scores.total}/60</span>
+            <span className="text-2xl font-bold">{scores.total}/54</span>
           </div>
         </div>
 

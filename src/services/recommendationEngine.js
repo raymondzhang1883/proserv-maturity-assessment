@@ -14,15 +14,15 @@ export class RecommendationEngine {
     const baseRecs = this._getBaseRecommendations(persona);
     let recommendations = [...baseRecs];
 
-    // Personalize based on operational challenge
-    if (context.challenge && CHALLENGE_RECOMMENDATIONS[context.challenge]) {
-      recommendations[1] = CHALLENGE_RECOMMENDATIONS[context.challenge];
-    }
+    // Personalize based on operational challenge (Removed)
+    // if (context.challenge && CHALLENGE_RECOMMENDATIONS[context.challenge]) {
+    //   recommendations[1] = CHALLENGE_RECOMMENDATIONS[context.challenge];
+    // }
 
-    // Adjust based on growth strategy
-    if (context.growth && GROWTH_STRATEGY_RECOMMENDATIONS[context.growth] && persona !== 'P0') {
-      recommendations[0] = GROWTH_STRATEGY_RECOMMENDATIONS[context.growth];
-    }
+    // Adjust based on growth strategy (Removed)
+    // if (context.growth && GROWTH_STRATEGY_RECOMMENDATIONS[context.growth] && persona !== 'P0') {
+    //   recommendations[0] = GROWTH_STRATEGY_RECOMMENDATIONS[context.growth];
+    // }
 
     // Apply messaging modifications based on KPI owner
     if (context.owner && OWNER_MESSAGING_MODIFICATIONS[context.owner]) {

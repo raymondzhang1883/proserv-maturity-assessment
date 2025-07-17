@@ -7,49 +7,50 @@ export const PERSONA_THRESHOLDS = {
 };
 
 export const PERSONA_LABELS = {
-  P4: 'Strategic Optimiser',
-  P3: 'Insight Builder',
-  P2: 'Data Aggregator',
-  P1: 'Basic Tracker',
-  P0: 'KPI Newcomer'
+  P4: 'Strategic / Value Multiplier',
+  P3: 'Predictive / Optimized',
+  P2: 'Integrated / Insight-driven',
+  P1: 'Standardized / Foundational',
+  P0: 'Ad Hoc / Fire-fighting'
 };
 
 export const PERSONA_DESCRIPTIONS = {
-  P0: 'You\'re starting your KPI journey. Most reporting happens in spreadsheets with manual data collection.',
-  P1: 'You track core metrics but rely heavily on manual processes. Basic reporting infrastructure is in place.',
-  P2: 'You aggregate data from multiple sources into centralized reports. Some automation exists but gaps remain.',
-  P3: 'You build meaningful insights from your data with good automation and predictive capabilities.',
-  P4: 'You optimize strategy using advanced analytics, real-time data, and sophisticated forecasting models.'
+  P0: 'You\'re starting your KPI journey. Most reporting happens in spreadsheets with manual data collection. You have minimal system alignment and business unit proccesses vary.',
+  P1: 'You track core metrics and have defined KPIs but rely heavily on manual processes. Basic reporting infrastructure is in place but are hindsight-oriented.',
+  P2: 'You aggregate data from multiple sources into centralized, trusted reports. Data informs weekly decision-making.',
+  P3: 'You build meaningful insights from your data with good automation and business unit alignment. You apply data to forecasting, pricing, inventory, and churn modelling.',
+  P4: 'You optimize strategy using advanced analytics, real-time data, and sophisticated forecasting models. Data infrastructure is a differentiator that enables M&A support, GTM agility, and rapid scaling.'
 };
 
 export const BASE_RECOMMENDATIONS = {
   P0: [
-    'Start small: Automate billable-utilisation and gross-margin feeds to replace manual spreadsheets.',
+    'Conduct a strategic data roadmap, standardise processes, and define which KPIs matter and how to measure them.',
     'Create a shared glossary so everyone means the same thing by "margin" and "utilisation."',
-    'Set a 90-day goal to reduce manual data fixes from current level to the next lower tier.'
+    'Start small: Automate billable-utilisation and gross-margin feeds to replace manual spreadsheets.'
   ],
   P1: [
     'Centralise reporting: Move from scattered spreadsheets to a single dashboard that updates automatically.',
     'Add forecast accuracy tracking to catch revenue surprises before they hit P&L.',
-    'Establish monthly KPI review cadence with clear owners for each metric.'
+    'Launch sprint-based implementations that prove value quickly and standardise metric definitions across business units.'
   ],
   P2: [
     'Layer predictive metrics: Add leading indicators like pipeline velocity and resource demand forecasting.',
     'Implement automated alerts when utilisation or margin trends outside acceptable ranges.',
-    'Connect KPIs to cash-flow projections for better working capital management.'
+    'Implement a scalable data platform (preferably SaaS) focused on high-value business use cases.'
   ],
   P3: [
     'Build scenario planning: Create "what-if" models for utilisation drops, rate changes, and market shifts.',
     'Add client profitability segmentation to focus growth efforts on highest-value relationships.',
-    'Implement real-time project health scoring to prevent margin leakage.'
+    'Embed analytics in operations, introduce self-service BI, and strengthen data governance.'
   ],
   P4: [
     'Advanced analytics: Layer machine learning for demand forecasting and optimal resource allocation.',
     'Build competitive benchmarking dashboards using industry data sources.',
-    'Create executive scorecard with forward-looking strategic KPIs tied to company objectives.'
+    'Adopt managed services to reduce run-rate costs while ensuring platform continuity, and mature DataOps practices to maintain momentum.'
   ]
 };
 
+//Removed
 export const CHALLENGE_RECOMMENDATIONS = {
   'Project profitability': 'Implement real-time project margin alerts and weekly profit variance reports to catch overruns early.',
   'Hiring & retention': 'Add utilization forecasting and skills gap analysis to predict hiring needs 6-8 weeks ahead.',
@@ -57,7 +58,7 @@ export const CHALLENGE_RECOMMENDATIONS = {
   'Capacity planning & utilisation': 'Build resource demand forecasting with project pipeline integration for better capacity allocation.',
   'Cash-flow management': 'Connect project milestones to AR aging and cash flow projections for predictable revenue timing.'
 };
-
+//Removed
 export const GROWTH_STRATEGY_RECOMMENDATIONS = {
   'Win new clients': 'Prioritize sales efficiency KPIs: pipeline conversion rates, proposal win rates, and client acquisition cost by channel.',
   'Grow existing clients': 'Focus on client satisfaction and account expansion metrics: NPS trends, upsell rates, and wallet share analysis.',

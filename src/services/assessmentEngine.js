@@ -218,7 +218,7 @@ export class AssessmentEngine {
         },
         total: {
           value: scores.total,
-          maxValue: 60,
+          maxValue: 54,
           description: 'Total Maturity Score'
         }
       },
