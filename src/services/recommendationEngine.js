@@ -1,8 +1,7 @@
 import { 
   BASE_RECOMMENDATIONS, 
   CHALLENGE_RECOMMENDATIONS, 
-  GROWTH_STRATEGY_RECOMMENDATIONS,
-  OWNER_MESSAGING_MODIFICATIONS
+  GROWTH_STRATEGY_RECOMMENDATIONS
 } from '../config/personas.js';
 import { CTA_CONFIGURATIONS } from '../config/scoringRules.js';
 
@@ -24,10 +23,6 @@ export class RecommendationEngine {
     //   recommendations[0] = GROWTH_STRATEGY_RECOMMENDATIONS[context.growth];
     // }
 
-    // Apply messaging modifications based on KPI owner
-    if (context.owner && OWNER_MESSAGING_MODIFICATIONS[context.owner]) {
-      recommendations = this._applyMessagingModifications(recommendations, context.owner);
-    }
 
     // Replace dynamic placeholder for manual work level
     recommendations = this._replaceDynamicContent(recommendations, answers);
@@ -78,21 +73,6 @@ export class RecommendationEngine {
     return BASE_RECOMMENDATIONS[persona] || BASE_RECOMMENDATIONS['P0'];
   }
 
-  /**
-   * Apply messaging modifications based on KPI owner
-   */
-  static _applyMessagingModifications(recommendations, owner) {
-    const modifications = OWNER_MESSAGING_MODIFICATIONS[owner];
-    if (!modifications) return recommendations;
-
-    return recommendations.map(rec => {
-      let modifiedRec = rec;
-      for (const [original, replacement] of Object.entries(modifications)) {
-        modifiedRec = modifiedRec.replace(original, replacement);
-      }
-      return modifiedRec;
-    });
-  }
 
   /**
    * Replace dynamic content placeholders in recommendations

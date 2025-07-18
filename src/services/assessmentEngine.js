@@ -43,7 +43,7 @@ export class AssessmentEngine {
       const kpiImpact = RecommendationEngine.getKPIImpactStatement(scores.missingKPIs);
       
       // Generate assessment summary
-      const summary = DataTransformer.generateAssessmentSummary(scores, answers, persona);
+      const summary = DataTransformer.generateAssessmentSummary(scores, answers);
       
       // Prepare complete user data for potential API submission
       const userData = DataTransformer.prepareUserData(
@@ -157,16 +157,16 @@ export class AssessmentEngine {
    */
   static _countAnsweredSections(answers) {
     const sectionQuestions = {
-      context: ['E1', 'E2', 'E3', 'E14', 'E15', 'E16', 'E17', 'E18', 'E19'],
+      context: ['E2', 'E15'],
       coverage: ['A1'],
       reliability: ['B2', 'B3', 'B4', 'B5'],
       tooling: ['C6', 'C7', 'C8', 'C9'],
-      usage: ['D10', 'D11', 'D12', 'D13', 'D14', 'D15']
+      usage: ['D11', 'D13']
     };
 
     let completedSections = 0;
     
-    for (const [section, questions] of Object.entries(sectionQuestions)) {
+    for (const [, questions] of Object.entries(sectionQuestions)) {
       const answeredInSection = questions.filter(q => answers[q] !== undefined).length;
       if (answeredInSection > 0) {
         completedSections++;
@@ -206,11 +206,6 @@ export class AssessmentEngine {
           percentage: DataTransformer.formatScoreAsPercentage(scores.automation),
           description: 'Automation Score'
         },
-        governance: {
-          value: scores.governance,
-          percentage: DataTransformer.formatScoreAsPercentage(scores.governance),
-          description: 'Governance Score'
-        },
         forecast: {
           value: scores.forecast,
           percentage: DataTransformer.formatScoreAsPercentage(scores.forecast),
@@ -218,7 +213,7 @@ export class AssessmentEngine {
         },
         total: {
           value: scores.total,
-          maxValue: 54,
+          maxValue: 47,
           description: 'Total Maturity Score'
         }
       },

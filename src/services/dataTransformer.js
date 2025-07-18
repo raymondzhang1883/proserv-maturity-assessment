@@ -6,14 +6,14 @@ export class DataTransformer {
    */
   static extractContext(answers) {
     return {
-      owner: answers.D10 || '',
-      timeline: answers.E19 || '',
+      owner: '',
+      timeline: '',
       challenge: answers.E15 || '',
-      growth: answers.E14 || '',
-      industry: answers.E1 || '',
+      growth: '',
+      industry: '',
       companySize: answers.E2 || '',
-      revenue: answers.E3 || '',
-      marketConditions: answers.E16 || ''
+      revenue: '',
+      marketConditions: ''
     };
   }
 
@@ -22,9 +22,7 @@ export class DataTransformer {
    */
   static extractDemographics(answers) {
     return {
-      industry: answers.E1 || null,
       companySize: answers.E2 || null,
-      annualRevenue: answers.E3 || null,
     };
   }
 
@@ -33,12 +31,7 @@ export class DataTransformer {
    */
   static extractBusinessContext(answers) {
     return {
-      growthStrategy: answers.E14 || null,
       operationalChallenge: answers.E15 || null,
-      marketConditions: answers.E16 || null,
-      successCriteria: answers.E17 || null,
-      constraints: answers.E18 || null,
-      timeline: answers.E19 || null,
     };
   }
 
@@ -56,12 +49,8 @@ export class DataTransformer {
       dataArchitecture: answers.C7 || null,
       internalTeam: answers.C8 || null,
       visibilityGaps: answers.C9 || null,
-      kpiOwnership: answers.D10 || null,
       dataUsers: answers.D11 || null,
-      biggestPain: answers.D12 || null,
       forecastingCapability: answers.D13 || null,
-      projectLoadManagement: answers.D14 || null,
-      workLifeBalance: answers.D15 || null,
     };
   }
 
@@ -125,7 +114,7 @@ export class DataTransformer {
   /**
    * Generate assessment summary text
    */
-  static generateAssessmentSummary(scores, answers, persona) {
+  static generateAssessmentSummary(scores, answers) {
     const latencyLabel = this.getLatencyDescription(answers.B3);
     const selectedKPIs = scores.selectedKPIs;
     const confidence = answers.B2 || 0;
@@ -141,9 +130,7 @@ export class DataTransformer {
       'A1', // KPI coverage
       'B2', // Confidence
       'B3', // Reporting speed
-      'D10', // KPI ownership
       'E15', // Operational challenge
-      'E19'  // Timeline
     ];
 
     const missing = requiredFields.filter(field => !answers[field]);

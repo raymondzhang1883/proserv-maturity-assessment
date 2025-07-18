@@ -87,24 +87,6 @@ export const AUTOMATION_SCORING_WEIGHTS = {
   LIMITED_TEAM: 1
 };
 
-export const GOVERNANCE_SCORING = {
-  OWNER_WEIGHTS: {
-    'Executive team (strategy)': 4,
-    'Finance (P&L focus)': 3,
-    'Operations (efficiency)': 3,
-    'Sales leadership (growth)': 2,
-    'Client success (retention)': 2,
-    'No clear owner': 0
-  },
-  USER_WEIGHTS: {
-    'Board of directors': 3,
-    'C-suite': 3,
-    'Department heads': 2,
-    'Project managers': 1,
-    'Individual contributors': 1,
-    'External stakeholders': 2
-  }
-};
 
 export const LEAD_SCORING_WEIGHTS = {
   OWNER_MODIFIERS: {
@@ -157,6 +139,5 @@ export const SCORING_CALCULATIONS = {
   CONFIDENCE_WEIGHT: 1,
   LATENCY_WEIGHT: 0.7,
   AUTOMATION_WEIGHT: 1,
-  GOVERNANCE_WEIGHT: 0.7,
   FORECAST_WEIGHT: 1
 }; 

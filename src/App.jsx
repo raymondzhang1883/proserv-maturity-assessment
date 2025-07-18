@@ -34,7 +34,7 @@ const ProServKPIAssessment = () => {
   const [answers, setAnswers] = useState({});
   const [results, setResults] = useState(null);
   const [showResults, setShowResults] = useState(false);
-  const [gdprConsent, setGdprConsent] = useState(true);
+  const [gdprConsent] = useState(true);
 
   // Use sections and questions from config
   const iconMap = {
@@ -162,7 +162,7 @@ const ProServKPIAssessment = () => {
   const ResultsCard = () => {
     if (!results) return null;
 
-    const { scores, persona, recommendations, leadScore, leadPriority, ctaConfig, kpiImpact, summary } = results;
+    const { scores, persona, recommendations, leadPriority, ctaConfig, kpiImpact, summary } = results;
     
     // Expose to global scope for easy console access during development
     if (typeof window !== 'undefined') {
@@ -211,7 +211,7 @@ const ProServKPIAssessment = () => {
             </div>
           )}
 
-                  <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
             <div className="text-center p-4 bg-gray-50 rounded-lg">
               <div className="text-xs text-gray-600 h-8 flex items-center justify-center">You are tracking</div>
               <div className="text-2xl font-bold text-blue-600">{DataTransformer.formatScoreAsPercentage(scores.coverage)}%</div>
@@ -233,11 +233,6 @@ const ProServKPIAssessment = () => {
               <div className="text-xs text-gray-500 mt-1">of potential services</div>
             </div>
             <div className="text-center p-4 bg-gray-50 rounded-lg">
-              <div className="text-xs text-gray-600 h-8 flex items-center justify-center">You are</div>
-              <div className="text-2xl font-bold text-blue-600">{DataTransformer.formatScoreAsPercentage(scores.governance)}%</div>
-              <div className="text-xs text-gray-500 mt-1">clear in KPI ownership and adoption</div>
-            </div>
-            <div className="text-center p-4 bg-gray-50 rounded-lg">
               <div className="text-xs text-gray-600 h-8 flex items-center justify-center">You are able to forecast</div>
               <div className="text-2xl font-bold text-blue-600">{DataTransformer.formatScoreAsPercentage(scores.forecast)}%</div>
               <div className="text-xs text-gray-500 mt-1">of your potential predictive capabilities</div>
@@ -247,7 +242,7 @@ const ProServKPIAssessment = () => {
         <div className="text-center mb-8">
           <div className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg">
             <span className="text-lg font-medium">Total Maturity Score: </span>
-            <span className="text-2xl font-bold">{scores.total}/54</span>
+            <span className="text-2xl font-bold">{scores.total}/47</span>
           </div>
         </div>
 
@@ -389,7 +384,7 @@ const ProServKPIAssessment = () => {
           </div>
 
           <div className="space-y-8">
-            {currentQuestions.map((question, index) => (
+            {currentQuestions.map((question) => (
               <div key={question.id} className="space-y-4">
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">

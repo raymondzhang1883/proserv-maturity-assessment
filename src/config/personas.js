@@ -1,8 +1,8 @@
 export const PERSONA_THRESHOLDS = {
-  P4: 49,
-  P3: 37,
-  P2: 25,
-  P1: 13,
+  P4: 42,
+  P3: 32,
+  P2: 22,
+  P1: 11,
   P0: 0
 };
 
@@ -41,7 +41,7 @@ export const BASE_RECOMMENDATIONS = {
   P3: [
     'Build scenario planning: Create "what-if" models for utilisation drops, rate changes, and market shifts.',
     'Add client profitability segmentation to focus growth efforts on highest-value relationships.',
-    'Embed analytics in operations, introduce self-service BI, and strengthen data governance.'
+    'Embed analytics in operations, introduce self-service BI, and strengthen data quality management.'
   ],
   P4: [
     'Advanced analytics: Layer machine learning for demand forecasting and optimal resource allocation.',
@@ -66,15 +66,4 @@ export const GROWTH_STRATEGY_RECOMMENDATIONS = {
   'Acquire other firms': 'Build integration KPIs: cultural alignment scores, talent retention rates, and synergy realization tracking.'
 };
 
-export const OWNER_MESSAGING_MODIFICATIONS = {
-  'Finance (P&L focus)': {
-    'Add ': 'Calculate ROI impact of adding ',
-    'Implement ': 'Deploy cost-effective ',
-    'Build ': 'Invest in '
-  },
-  'Operations (efficiency)': {
-    'Add ': 'Streamline operations by adding ',
-    'Implement ': 'Automate processes with ',
-    'Build ': 'Systematize '
-  }
-}; 
+ 

@@ -4,7 +4,6 @@ import {
   FORECAST_SCORING,
   AUTOMATION_MATRIX,
   AUTOMATION_SCORING_WEIGHTS,
-  GOVERNANCE_SCORING,
   SCORING_CALCULATIONS
 } from '../config/scoringRules.js';
 import { allKPIs } from '../config/questions.js';
@@ -40,7 +39,7 @@ export class ScoringEngine {
    */
   static calculateAutomationScore(tools = [], architecture = '', team = '') {
     // Check for perfect matches first
-    for (const [key, config] of Object.entries(AUTOMATION_MATRIX)) {
+    for (const [, config] of Object.entries(AUTOMATION_MATRIX)) {
       if (this._matchesAutomationConfig(tools, architecture, team, config)) {
         return config.score;
       }
@@ -71,27 +70,6 @@ export class ScoringEngine {
     return Math.min(10, score);
   }
 
-  /**
-   * Calculate governance score based on ownership and user adoption
-   */
-  static calculateGovernanceScore(kpiOwner = '', dataUsers = []) {
-    // Get owner weight (0-4 points)
-    const ownerWeight = GOVERNANCE_SCORING.OWNER_WEIGHTS[kpiOwner] || 0;
-    
-    // Calculate weighted user adoption (0-6 points max)
-    const userWeight = dataUsers.reduce((total, user) => {
-      return total + (GOVERNANCE_SCORING.USER_WEIGHTS[user] || 0);
-    }, 0);
-    
-    // Cap user weight at 6 to prevent runaway scores
-    const cappedUserWeight = Math.min(6, userWeight);
-    
-    // Total governance score (0-10 points)
-    const governance = Math.min(10, ownerWeight + cappedUserWeight);
-    
-    // Ensure minimum score of 1 if any governance exists
-    return Math.max(1, governance);
-  }
 
   /**
    * Calculate forecast score based on forecasting capability
@@ -109,7 +87,6 @@ export class ScoringEngine {
       (scores.confidence * SCORING_CALCULATIONS.CONFIDENCE_WEIGHT) +
       (scores.latency * SCORING_CALCULATIONS.LATENCY_WEIGHT) +
       (scores.automation * SCORING_CALCULATIONS.AUTOMATION_WEIGHT) +
-      (scores.governance * SCORING_CALCULATIONS.GOVERNANCE_WEIGHT) +
       (scores.forecast * SCORING_CALCULATIONS.FORECAST_WEIGHT)
     );
   }
@@ -122,7 +99,6 @@ export class ScoringEngine {
     const confidence = this.calculateConfidenceScore(answers.B2, answers.B4, answers.B5);
     const latency = this.calculateLatencyScore(answers.B3);
     const automation = this.calculateAutomationScore(answers.C6, answers.C7, answers.C8);
-    const governance = this.calculateGovernanceScore(answers.D10, answers.D11);
     const forecast = this.calculateForecastScore(answers.D13);
 
     const scores = {
@@ -130,7 +106,6 @@ export class ScoringEngine {
       confidence,
       latency,
       automation,
-      governance,
       forecast
     };
 
