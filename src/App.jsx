@@ -174,7 +174,7 @@ const ProServKPIAssessment = () => {
         <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-8">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-gray-800 mb-3">
-              You're a <span className="text-blue-600">{persona.personaLabel}</span>
+              Your maturity level is <span className="text-blue-600">{persona.personaLabel}</span>
             </h1>
             <div className="w-32 h-1 bg-blue-600 mx-auto rounded mb-4"></div>
             <p className="text-base text-gray-600 max-w-2xl mx-auto mb-4 italic">
