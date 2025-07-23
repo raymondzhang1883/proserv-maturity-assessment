@@ -1,8 +1,16 @@
-# ProServ KPI Maturity Assessment
+# ProServ Assessment
 
-A comprehensive **Professional Services KPI Maturity Assessment Tool** built with React and Vite. This interactive assessment helps professional services firms evaluate their KPI maturity across 5 key dimensions and provides personalized recommendations based on their responses.
+A comprehensive **Professional Services KPI Maturity Assessment Tool** built with React and Vite. This interactive assessment evaluates professional services firms across 5 key dimensions using Resultant's proven maturity framework, providing personalized recommendations and lead scoring.
 
 ## 🎯 **Features**
+
+### **Assessment Framework**
+Built on **Resultant's PE Data Maturity Whitepaper** with 5 maturity levels:
+- **P0 - Ad Hoc/Firefighting**: No system alignment, metrics in spreadsheets
+- **P1 - Standardized/Foundational**: Defined KPIs, basic reporting
+- **P2 - Integrated/Insight-driven**: Automated reporting, weekly decision-making
+- **P3 - Predictive/Optimized**: Data science applied to forecasting and optimization
+- **P4 - Strategic/Value Multiplier**: Data infrastructure as competitive differentiator
 
 ### **Assessment Sections**
 - **Business Context**: Industry, company size, revenue, growth strategy
@@ -12,68 +20,46 @@ A comprehensive **Professional Services KPI Maturity Assessment Tool** built wit
 - **Usage & Governance**: Data ownership, adoption, and forecasting
 
 ### **Intelligent Analysis**
-- **Dynamic Persona Classification**: 5 maturity levels (P0-P4)
-- **Personalized Recommendations**: Tailored next steps based on responses
-- **Lead Scoring**: Automatic qualification for sales follow-up
-- **Context-Aware CTAs**: Customized calls-to-action
+- **Dynamic Persona Classification**: Maps responses to 5 maturity levels (P0-P4)
+- **Personalized Recommendations**: Tailored next steps based on current maturity
+- **Lead Scoring Engine**: Automatic qualification for sales follow-up (75+ points = high priority)
+- **Context-Aware CTAs**: Customized calls-to-action based on persona and needs
 
-### **Database-Ready Architecture**
-- **Structured Data Collection**: All responses formatted for database integration
-- **GDPR Compliance**: User consent tracking
-- **Export Functionality**: Ready for CRM/marketing automation
-- **Session Management**: Unique session IDs and metadata
-
-## 🚀 **Quick Start**
-
-### **Prerequisites**
-- Node.js 16+ 
-- npm or yarn
-
-### **Installation**
-```bash
-# Clone the repository
-git clone https://github.com/raymondzhang1883/proserv-maturity-assessment.git
-
-# Navigate to project directory
-cd proserv-maturity-assessment
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-```
-
-### **Available Scripts**
-- `npm run dev` - Start development server (usually http://localhost:5173)
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-
-## 📊 **Assessment Flow**
-
-1. **Business Context** (6 questions): Industry, size, revenue, strategy
-2. **KPI Coverage** (1 question): Which metrics are tracked
-3. **Reliability & Latency** (4 questions): Data quality and timing
-4. **Tooling & Architecture** (4 questions): Technology and automation
-5. **Usage & Governance** (6 questions): Ownership and adoption
-6. **Results**: Persona classification and recommendations
 
 ## 🎨 **Technology Stack**
 
-- **Frontend**: React 18, Vite
-- **Styling**: Tailwind CSS
+- **Frontend**: React 19, Vite 7
+- **Styling**: Tailwind CSS 4.1
 - **Icons**: Lucide React
 - **State Management**: React useState
 - **Build Tool**: Vite
-- **Linting**: ESLint
+- **Linting**: ESLint 9
 
-## 🔧 **Database Integration Ready**
+## 🏗️ **Architecture**
 
-The application is designed for easy backend integration:
+### **Modular Service Architecture**
+The application uses a service-oriented architecture for maintainability and scalability:
+
+```
+src/
+├── services/           # Business logic engines
+│   ├── assessmentEngine.js      # Main orchestrator
+│   ├── scoringEngine.js         # Scoring calculations
+│   ├── personaEngine.js         # Persona determination
+│   ├── recommendationEngine.js  # Personalized recommendations
+│   ├── leadScoringEngine.js     # Lead scoring logic
+│   └── dataTransformer.js       # Data preparation & validation
+├── config/            # Configuration files
+│   ├── questions.js            # Question definitions
+│   ├── personas.js             # Persona configurations
+│   └── scoringRules.js         # Scoring rules & mappings
+└── App.jsx           # Main React component
+```
+
+### **Data Structure**
+Ready for database integration and CRM systems:
 
 ```javascript
-// Data structure ready for API/database
 const userData = {
   sessionId: "session_123...",
   demographics: { industry, companySize, revenue },
@@ -84,42 +70,16 @@ const userData = {
 }
 ```
 
-## 🚀 **Deployment**
+## 📋 **Documentation**
 
-### **GitHub Pages** (Recommended for demo)
-```bash
-npm run build
-# Deploy dist/ folder to GitHub Pages
-```
-
-### **Vercel/Netlify**
-- Connect GitHub repository
-- Build command: `npm run build`
-- Publish directory: `dist`
-
-## 📈 **Lead Scoring Algorithm**
-
-The assessment includes sophisticated lead scoring based on:
-- **Maturity Level**: Higher scores for P2-P4 personas
-- **Decision Authority**: Executive/Finance ownership (+15 points)
-- **Timeline Urgency**: "Within 3 months" (+15 points)
-- **Pain Points**: Project profitability issues (+10 points)
-- **Growth Strategy**: Acquisition/new clients (+5 points)
-
-**High-priority leads** (75+ points) are automatically flagged.
-
-## 🎯 **Personalization Engine**
-
-Recommendations are dynamically generated based on:
-- Current maturity persona (P0-P4)
-- Operational challenges
-- Growth strategy
-- KPI ownership structure
-- Technology readiness
+Additional documentation available in the `docs/` directory:
+- **ALL_QUESTIONS.md**: Complete question bank and assessment structure (this includes unused questions)
+- **PROGRAM_MATURITY.md**: Detailed persona definitions from Resultant's whitepaper
+- **FURTHER_DEVELOPMENT.md**: Future enhancement notes
 
 ## 🤝 **Contributing**
 
-Created with assisstance from Byron Hubbard and Preston Howell
+Created with assistance from Byron Hubbard and Preston Howell
 
 ## 📄 **License**
 
