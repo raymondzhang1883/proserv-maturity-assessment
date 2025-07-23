@@ -101,7 +101,7 @@ export const LEAD_SCORING_WEIGHTS = {
   CHALLENGE_MODIFIERS: {
     'Project profitability': 10,
     'Cash-flow management': 8,
-    'Capacity planning & utilisation': 6
+    'Capacity planning & utilization': 6
   },
   GROWTH_MODIFIERS: {
     'Win new clients': 5,

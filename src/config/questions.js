@@ -7,8 +7,8 @@ export const sections = [
 ];
 
 export const allKPIs = [
-  'Billable-utilisation %',
-  'Average bill / realised rate',
+  'Billable-utilization %',
+  'Average bill / realized rate',
   'Project gross-margin %',
   'Revenue-forecast accuracy',
   'Bench cost (idle hours × loaded rate)',
@@ -23,8 +23,8 @@ export const questions = {
       type: 'multi-select',
       note: 'Select all that apply',
       options: [
-        'Billable-utilisation %',
-        'Average bill / realised rate',
+        'Billable-utilization %',
+        'Average bill / realized rate',
         'Project gross-margin %',
         'Revenue-forecast accuracy',
         'Bench cost (idle hours × loaded rate)',
@@ -179,8 +179,8 @@ export const questions = {
         'Hiring & retention',
         'Project profitability',
         'Cost of client acquisition',
-        'Capacity planning & utilisation',
-        'Pricing / rate realisation',
+        'Capacity planning & utilization',
+        'Pricing / rate realization',
         'Cash-flow management'
       ]
     }

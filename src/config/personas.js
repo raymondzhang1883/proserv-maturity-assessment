@@ -25,8 +25,8 @@ export const PERSONA_DESCRIPTIONS = {
 export const BASE_RECOMMENDATIONS = {
   P0: [
     'Conduct a strategic data roadmap, standardise processes, and define which KPIs matter and how to measure them.',
-    'Create a shared glossary so everyone means the same thing by "margin" and "utilisation."',
-    'Start small: Automate billable-utilisation and gross-margin feeds to replace manual spreadsheets.'
+    'Create a shared glossary so everyone means the same thing by "margin" and "utilization."',
+    'Start small: Automate billable-utilization and gross-margin feeds to replace manual spreadsheets.'
   ],
   P1: [
     'Centralise reporting: Move from scattered spreadsheets to a single dashboard that updates automatically.',
@@ -35,11 +35,11 @@ export const BASE_RECOMMENDATIONS = {
   ],
   P2: [
     'Layer predictive metrics: Add leading indicators like pipeline velocity and resource demand forecasting.',
-    'Implement automated alerts when utilisation or margin trends outside acceptable ranges.',
+    'Implement automated alerts when utilization or margin trends outside acceptable ranges.',
     'Implement a scalable data platform (preferably SaaS) focused on high-value business use cases.'
   ],
   P3: [
-    'Build scenario planning: Create "what-if" models for utilisation drops, rate changes, and market shifts.',
+    'Build scenario planning: Create "what-if" models for utilization drops, rate changes, and market shifts.',
     'Add client profitability segmentation to focus growth efforts on highest-value relationships.',
     'Embed analytics in operations, introduce self-service BI, and strengthen data quality management.'
   ],
@@ -55,7 +55,7 @@ export const CHALLENGE_RECOMMENDATIONS = {
   'Project profitability': 'Implement real-time project margin alerts and weekly profit variance reports to catch overruns early.',
   'Hiring & retention': 'Add utilization forecasting and skills gap analysis to predict hiring needs 6-8 weeks ahead.',
   'Cost of client acquisition': 'Track sales pipeline velocity and client acquisition cost per service line to optimize marketing spend.',
-  'Capacity planning & utilisation': 'Build resource demand forecasting with project pipeline integration for better capacity allocation.',
+  'Capacity planning & utilization': 'Build resource demand forecasting with project pipeline integration for better capacity allocation.',
   'Cash-flow management': 'Connect project milestones to AR aging and cash flow projections for predictable revenue timing.'
 };
 //Removed
