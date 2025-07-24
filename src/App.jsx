@@ -60,6 +60,8 @@ const ProServKPIAssessment = () => {
   const handleNext = () => {
     if (currentSection < sectionsWithIcons.length - 1) {
       setCurrentSection(currentSection + 1);
+      // Scroll to top of page when moving to next section
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       // Process assessment using the new engine
       const assessmentResults = AssessmentEngine.processAssessment(answers, gdprConsent);
@@ -71,12 +73,16 @@ const ProServKPIAssessment = () => {
       }
       
       setShowResults(true);
+      // Scroll to top when showing results
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const handlePrevious = () => {
     if (currentSection > 0) {
       setCurrentSection(currentSection - 1);
+      // Scroll to top of page when moving to previous section
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
