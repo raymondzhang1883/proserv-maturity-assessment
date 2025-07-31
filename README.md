@@ -61,12 +61,54 @@ Ready for database integration and CRM systems:
 
 ```javascript
 const userData = {
+  // Metadata
   sessionId: "session_123...",
-  demographics: { industry, companySize, revenue },
-  businessContext: { growth, challenges, timeline },
-  kpiAssessment: { coverage, confidence, tools },
-  results: { persona, scores, leadScore },
-  consent: { gdprConsent, marketingOptIn }
+  timestamp: "2024-01-15T10:30:00.000Z",
+  assessmentVersion: "v4.0",
+  
+  // Demographics (Limited - only company size captured)
+  demographics: {
+    companySize: "101-500 employees" // From question E2
+  },
+  
+  // Business Context (Limited - only operational challenge captured)
+  businessContext: {
+    operationalChallenge: "Project profitability" // From question E15
+  },
+  
+  // KPI Assessment (Comprehensive - all assessment questions)
+  kpiAssessment: {
+    coverage: ["Billable-utilization %", "Project gross-margin %"], // From A1
+    confidence: 7, // From B2 (0-10 scale)
+    reportingSpeed: "Within 1 week", // From B3
+    manualWork: "Around half", // From B4
+    dataQualityIssues: ["Missing fields", "Inconsistent definitions"], // From B5
+    reportingTools: ["PSA built-in dashboards", "Spreadsheets"], // From C6
+    dataArchitecture: "Multiple disconnected systems", // From C7
+    internalTeam: "Limited bandwidth", // From C8
+    visibilityGaps: ["Sales / Business Development", "Operations / Resource Mgmt"], // From C9
+    dataUsers: ["C-suite", "Department heads", "Project managers"], // From D11
+    forecastingCapability: "Manual quarterly forecast in spreadsheets" // From D13
+  },
+  
+  // Calculated Results
+  results: {
+    scores: { total: 65, coverage: 15, reliability: 20, tooling: 15, usage: 15 },
+    persona: "P2",
+    personaLabel: "Integrated/Insight-driven",
+    totalScore: 65,
+    leadScore: 78,
+    recommendations: ["Implement automated reporting...", "Establish data governance..."]
+  },
+  
+  // User Consent & Preferences
+  consent: {
+    gdprConsent: true,
+    marketingOptIn: true
+  },
+  
+  // Raw answers for backup/debugging
+  rawAnswers: { A1: [...], B2: 7, B3: "Within 1 week", ... }
 }
 ```
 
