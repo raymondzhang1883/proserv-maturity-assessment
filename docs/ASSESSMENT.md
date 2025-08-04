@@ -4,16 +4,6 @@
 
 This assessment evaluates professional services organizations' maturity in measuring and managing key performance indicators (KPIs). The assessment generates a persona score (P0-P4) representing data maturity levels from "Ad Hoc / Fire-fighting" to "Strategic / Value Multiplier."
 
-## Assessment Structure
-
-The assessment is organized into 5 main sections:
-
-1. **Business Context** - Company size and operational challenges
-2. **KPI Coverage** - Which performance indicators are tracked
-3. **Reliability & Latency** - Data confidence and reporting speed
-4. **Tooling & Architecture** - Technology stack and team capabilities
-5. **Usage & Forecasting** - Data usage and predictive capabilities
-
 ## Core KPIs Evaluated
 
 The assessment focuses on 6 fundamental professional services KPIs:
@@ -25,167 +15,148 @@ The assessment focuses on 6 fundamental professional services KPIs:
 - Bench cost (idle hours × loaded rate)
 - Client satisfaction / NPS
 
-## Detailed Questions and Answer Choices
+## Scoring Structure
 
-### Section 1: Business Context
+The assessment evaluates **5 core dimensions** using **9 questions** to calculate a composite maturity score:
 
-**E2: What is your company size by number of employees?**
-- 1-25 employees
-- 26-100 employees
-- 101-500 employees
-- 501-1,000 employees
-- 1,000+ employees
+1. **Coverage Score** (Weight: 1.0) - 1 question
+2. **Confidence Score** (Weight: 1.0) - 3 questions  
+3. **Latency Score** (Weight: 0.7) - 1 question
+4. **Automation Score** (Weight: 1.0) - 3 questions
+5. **Forecast Score** (Weight: 1.0) - 1 question
 
-**E15: Your biggest operational challenge?**
-- Hiring & retention
-- Project profitability
-- Cost of client acquisition
-- Capacity planning & utilization
-- Pricing / rate realization
-- Cash-flow management
+### Composite Score Formula
 
-### Section 2: KPI Coverage
+**Total Score = (Coverage × 1.0) + (Confidence × 1.0) + (Latency × 0.7) + (Automation × 1.0) + (Forecast × 1.0)**
+
+**Maximum Possible Score: 47 points**
+- Coverage: 10 points × 1.0 = 10
+- Confidence: 10 points × 1.0 = 10  
+- Latency: 10 points × 0.7 = 7
+- Automation: 10 points × 1.0 = 10
+- Forecast: 10 points × 1.0 = 10
+- **Total: 47 points**
+
+---
+
+## 📊 Coverage Score (Weight: 1.0)
+*Maximum: 10 points*
 
 **A1: Which performance indicators does your team review at least monthly?**
 *(Multi-select - Select all that apply)*
-- Billable-utilization %
-- Average bill / realized rate
-- Project gross-margin %
-- Revenue-forecast accuracy
-- Bench cost (idle hours × loaded rate)
-- Client satisfaction / NPS
-- None of the above or I don't know
 
-### Section 3: Reliability & Latency
+- Billable-utilization % **(1.67 points)**
+- Average bill / realized rate **(1.67 points)**
+- Project gross-margin % **(1.67 points)**
+- Revenue-forecast accuracy **(1.67 points)**
+- Bench cost (idle hours × loaded rate) **(1.67 points)**
+- Client satisfaction / NPS **(1.67 points)**
+- None of the above or I don't know **(0 points)**
+
+**Calculation:** `Math.round((selected KPIs / 6) × 10)`
+
+---
+
+## 🎯 Confidence Score (Weight: 1.0)
+*Maximum: 10 points*
 
 **B2: How confident are you in those numbers?**
 *(Slider: 0-10 scale)*
-- Left Label: Not confident
-- Right Label: Completely confident
 
-**B3: How soon after month-end are your core KPIs ready?**
-- Same day
-- Within 1 week
-- 1–2 weeks
-- More than 2 weeks / Not sure
+- Scale from 0 (Not confident) to 10 (Completely confident) **(0-10 base points)**
 
 **B4: Roughly what share of your KPI data still needs manual fixes every month?**
-- Nothing
-- Very little
-- Around half
-- More than half
+
+- Nothing **(0 penalty)**
+- Very little **(-2 points penalty)**
+- Around half **(-4 points penalty)**
+- More than half **(-6 points penalty)**
 
 **B5: Which data-quality issues are you most concerned about?**
 *(Multi-select - Select all that apply)*
-- Duplicate records
-- Missing fields
-- Inconsistent definitions
-- Human error
-- None - our data is reliable
 
-### Section 4: Tooling & Architecture
+- Duplicate records **(0 bonus)**
+- Missing fields **(0 bonus)**
+- Inconsistent definitions **(0 bonus)**
+- Human error **(0 bonus)**
+- None - our data is reliable **(+2 points bonus)**
+
+**Calculation:** `Math.max(0, Math.min(10, B2_slider - manual_penalty + quality_bonus))`
+
+---
+
+## ⚡ Latency Score (Weight: 0.7)
+*Maximum: 10 points (weighted to 7)*
+
+**B3: How soon after month-end are your core KPIs ready?**
+
+- Same day **(10 points)**
+- Within 1 week **(8 points)**
+- 1–2 weeks **(5 points)**
+- More than 2 weeks / Not sure **(1 point)**
+
+**Weighted Contribution:** `Latency Score × 0.7`
+
+---
+
+## 🔧 Automation Score (Weight: 1.0)
+*Maximum: 10 points*
 
 **C6: Where do you compile or view KPIs today?**
 *(Multi-select - Select all that apply)*
-- PSA built-in dashboards
-- Spreadsheets
-- BI platform (Tableau / Power BI / Looker)
-- We don't compile them consistently
+
+- PSA built-in dashboards **(+2 points)**
+- Spreadsheets **(base score only)**
+- BI platform (Tableau / Power BI / Looker) **(+3 points)**
+- We don't compile them consistently **(base score only)**
 
 **C7: How would you describe your data architecture?**
-- Modern cloud warehouse with APIs
-- Traditional database plus some integrations
-- Multiple disconnected systems
-- Mainly spreadsheets
-- Unsure
+
+- Modern cloud warehouse with APIs **(+3 points)**
+- Traditional database plus some integrations **(+1 point)**
+- Multiple disconnected systems **(base score only)**
+- Mainly spreadsheets **(base score only)**
+- Unsure **(base score only)**
 
 **C8: Do you have an internal data / BI team?**
-- Yes – dedicated
-- Limited bandwidth
-- None
 
-**C9: Which business units have the least visibility into their numbers?**
-*(Multi-select - Select all that apply)*
-- Sales / Business Development
-- Delivery / Project Mgmt
-- Finance / Accounting
-- Operations / Resource Mgmt
-- Marketing / Client Success
-- Leadership / Executive
-- All units see what they need
-- No unit has good visibility
+- Yes – dedicated **(+2 points)**
+- Limited bandwidth **(+1 point)**
+- None **(base score only)**
 
-### Section 5: Usage & Forecasting
+### Perfect Configuration Bonuses
+*If exact combinations match, receive fixed scores:*
 
-**D11: Who relies on data for day-to-day decisions?**
-*(Multi-select - Select all that apply)*
-- Board of directors
-- C-suite
-- Department heads
-- Project managers
-- Individual contributors
-- External stakeholders
+- **['BI platform'] + 'Modern cloud' + 'Dedicated team' = 10 points**
+- **['BI platform'] + 'Modern cloud' + 'Limited team' = 8 points**
+- **['BI platform'] + 'Traditional DB' + 'Dedicated team' = 7 points**
+- **['BI platform'] + 'Traditional DB' + 'Limited team' = 5 points**
+- **['PSA dashboards'] + 'Modern cloud' + 'Dedicated team' = 6 points**
+- **['PSA dashboards'] + 'Disconnected systems' + 'Limited team' = 3 points**
+- **['PSA dashboards', 'Spreadsheets'] + 'Disconnected systems' + 'None' = 2 points**
+- **['Spreadsheets'] + 'Mainly spreadsheets' + 'None' = 1 point**
+
+**Calculation:** Perfect match = fixed score, otherwise: `Math.min(10, 1 + tool_points + architecture_points + team_points)`
+
+---
+
+## 🔮 Forecast Score (Weight: 1.0)
+*Maximum: 10 points*
 
 **D13: Which statement best matches your forecasting ability?**
-- We don't forecast
-- Manual quarterly forecast in spreadsheets
-- Automated monthly forecast in BI tool
-- Scenario simulations & what-if analysis
 
-## Scoring Methodology
+- We don't forecast **(1 point)**
+- Manual quarterly forecast in spreadsheets **(4 points)**
+- Automated monthly forecast in BI tool **(7 points)**
+- Scenario simulations & what-if analysis **(10 points)**
 
-### Individual Score Components
+---
 
-#### 1. Coverage Score (Weight: 1.0)
-- Calculated as: (Number of selected KPIs / Total KPIs) × 10
-- Excludes "None of the above" selections
-- Range: 0-10 points
-
-#### 2. Confidence Score (Weight: 1.0)
-- Base score from B2 slider (0-10)
-- Manual work penalty: Subtracts 2 × manual work level
-  - Nothing: 0 penalty
-  - Very little: -2 points
-  - Around half: -4 points
-  - More than half: -6 points
-- Data quality bonus: +2 if "None - our data is reliable" selected
-- Range: 0-10 points
-
-#### 3. Latency Score (Weight: 0.7)
-- Same day: 10 points
-- Within 1 week: 8 points
-- 1–2 weeks: 5 points
-- More than 2 weeks / Not sure: 1 point
-
-#### 4. Automation Score (Weight: 1.0)
-- Uses combination of tools (C6), architecture (C7), and team (C8)
-- Perfect automation configurations receive exact scores:
-  - BI platform + Modern cloud + Dedicated team: 10 points
-  - BI platform + Modern cloud + Limited team: 8 points
-  - BI platform + Traditional DB + Dedicated team: 7 points
-  - BI platform + Traditional DB + Limited team: 5 points
-  - PSA dashboards + Modern cloud + Dedicated team: 6 points
-  - PSA dashboards + Disconnected systems + Limited team: 3 points
-  - Mixed tools + Disconnected systems + No team: 2 points
-  - Spreadsheets + Mainly spreadsheets + No team: 1 point
-- Partial matches use weighted scoring with base score of 1
-
-#### 5. Forecast Score (Weight: 1.0)
-- We don't forecast: 1 point
-- Manual quarterly forecast in spreadsheets: 4 points
-- Automated monthly forecast in BI tool: 7 points
-- Scenario simulations & what-if analysis: 10 points
-
-### Total Maturity Score
-Total Score = (Coverage × 1) + (Confidence × 1) + (Latency × 0.7) + (Automation × 1) + (Forecast × 1)
-
-Maximum possible score: 47 points
-
-### Persona Assignment
+## Persona Assignment
 
 Based on total score, organizations are assigned personas:
 
-- **P4 (42+ points): Strategic / Value Multiplier**
+- **P4 (42-47 points): Strategic / Value Multiplier**
   - Advanced analytics with real-time data and sophisticated forecasting
   - Data infrastructure as competitive differentiator
   
@@ -205,76 +176,26 @@ Based on total score, organizations are assigned personas:
   - Spreadsheet-based reporting with manual data collection
   - Minimal system alignment
 
-## Lead Scoring
+## Example Score Calculation
 
-A separate lead scoring system evaluates sales potential by applying modifiers to the maturity score:
+**Sample Responses:**
+- A1: 4 out of 6 KPIs selected → Coverage = `(4/6) × 10 = 6.67 → 7 points`
+- B2: Confidence slider = 8, B4: "Very little" manual work, B5: No quality bonus → Confidence = `8 - 2 + 0 = 6 points`
+- B3: "Within 1 week" → Latency = `8 points`
+- C6+C7+C8: No perfect match, BI platform + Traditional DB + Limited team → Automation = `1 + 3 + 1 + 1 = 6 points`
+- D13: "Automated monthly forecast" → Forecast = `7 points`
 
-### Lead Score Modifiers
+**Total Score:**
+`(7 × 1.0) + (6 × 1.0) + (8 × 0.7) + (6 × 1.0) + (7 × 1.0)`
+`= 7 + 6 + 5.6 + 6 + 7 = 31.6 → 32 points`
 
-**Owner Modifiers:**
-- Executive team (strategy): +15 points
-- Finance (P&L focus): +10 points
-- No clear owner: -5 points
+**Result: P3 - Predictive / Optimized**
 
-**Timeline Modifiers:**
-- Within 3 months: +15 points
-- Later / just exploring: -5 points
+## Technical Implementation
 
-**Challenge Modifiers:**
-- Project profitability: +10 points
-- Cash-flow management: +8 points
-- Capacity planning & utilization: +6 points
+- **Code Location:** `src/services/scoringEngine.js`
+- **Configuration:** `src/config/scoringRules.js`, `src/config/personas.js`
+- **Questions:** `src/config/questions.js`
+- **Persona Logic:** `src/services/personaEngine.js`
 
-**Growth Strategy Modifiers:**
-- Win new clients: +5 points
-- Acquire other firms: +5 points
-
-### Lead Priority Levels
-
-- **HIGH (75+ points): Priority Lead - High Intent & Authority**
-- **MEDIUM (50-74 points): Qualified Lead**
-- **LOW (<50 points): Information Seeker**
-
-### Sales Alert Triggers
-
-Immediate sales notifications are triggered for:
-- High-priority leads (75+ points) with "Within 3 months" timeline
-- Executive decision makers with 60+ lead score
-
-## Personalized Recommendations
-
-Each persona receives tailored recommendations:
-
-### P0 Recommendations
-- Conduct strategic data roadmap and standardize processes
-- Create shared glossary for metric definitions
-- Start with automating billable-utilization and gross-margin feeds
-
-### P1 Recommendations
-- Centralize reporting with automated dashboards
-- Add forecast accuracy tracking
-- Launch sprint-based implementations for quick value
-
-### P2 Recommendations
-- Layer predictive metrics and leading indicators
-- Implement automated alerts for utilization/margin trends
-- Implement scalable data platform focused on business use cases
-
-### P3 Recommendations
-- Build scenario planning with "what-if" models
-- Add client profitability segmentation
-- Embed analytics in operations with self-service BI
-
-### P4 Recommendations
-- Advanced analytics with machine learning for forecasting
-- Build competitive benchmarking dashboards
-- Adopt managed services and mature DataOps practices
-
-## Technical Implementation Notes
-
-- Assessment uses React frontend with modular service architecture
-- Scoring engines are independent and can be tested separately
-- Lead scoring and persona assignment happen server-side
-- Results include comprehensive breakdown for transparency
-- System supports GDPR compliance and marketing opt-ins
-- Integration points prepared for CRM, email marketing, and analytics platforms
+All scoring is deterministic and reproducible. The system tracks missing KPIs separately for recommendations but they do not affect the core persona score calculation.
